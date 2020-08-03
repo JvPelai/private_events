@@ -12,9 +12,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <%= link_to "#{event.title}" , event %> </td>
+        <td> <%=event.location %> </td>
+        <td> <%=event.date %> </td>  
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,11 @@
 
 <br>
 
+<% if logged_in?%>
 <%= link_to 'New Event', new_event_path %>
+<%else%>
+ <p><strong>
+ Log in to create an event!
+ </strong>
+ </p>
+<%end%>

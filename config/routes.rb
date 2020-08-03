@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'events#index'
   resources :events
   resources :users, except: [:destroy]
   resources :sessions, only: [:new, :create, :destroy]

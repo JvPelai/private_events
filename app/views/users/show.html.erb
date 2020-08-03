@@ -17,11 +17,21 @@
 </table>
 <h1>Events</h1>
 <table>
+  <thead>
   <tr>
     <th> Title</th>
     <th> Location</th>
     <th> Date</th>
   <tr>
+  </thead>
+  <tbody>
+  <% @user.created_events.each do |e| %>
+  <td> <%= link_to "#{e.title}" , e %> </td>
+  <td> <%=e.location %> </td>
+  <td> <%=e.date %> </td>
+  <% end %>
+  </tbody>
+  
 </table>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
