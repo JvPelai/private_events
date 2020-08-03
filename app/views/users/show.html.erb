@@ -15,7 +15,7 @@
     </tr>
   </tbody>
 </table>
-<h1>Events</h1>
+<h1>Events hosting</h1>
 <table>
   <thead>
   <tr>
@@ -31,7 +31,19 @@
   <td> <%=e.date %> </td>
   <% end %>
   </tbody>
-  
 </table>
+
+<h3>Events invited to: </h3>
+  <h4>Upcoming</h4>
+  <% @user.next_events.each do |e| %>
+  <td> <%= link_to "#{e.title}" , e %> </td>
+  <%end%>
+  </br>
+  <h4>Past events: </h4>
+  <% @user.prev_events.each do |e| %>
+  <td> <%= link_to "#{e.title}" , e %> </td>
+  <%end%>
+  </br>
+  
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

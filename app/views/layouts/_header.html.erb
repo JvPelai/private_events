@@ -5,9 +5,11 @@
         <% if logged_in? %>
           <h3><strong><%= link_to "Home", root_path %></strong></h3>
           <ul>
+              <li><strong>
+              <%= link_to "#{current_user.username}", current_user %></li>
+              </strong>
             <li><strong><%= link_to "Users", users_path %></strong></li>
             <li><%= link_to "New event", new_event_path%></li>
-              <li><%= link_to "#{current_user.username}", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li><%= link_to "Log out", sign_out_path, method: "delete" %></li>
             </ul>

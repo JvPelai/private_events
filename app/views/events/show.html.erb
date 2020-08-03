@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @event.title%></h1>
+<h3>Host: <%=@event.creator.username%></h3>
 <p><%=@event.description%></p>
+<h4>Attendees:</h4>
+<%@event.attendees.each do |a|%>
+<%= link_to  "#{a.username}", a  %>
+<%end%>
+<br />
+<br />
 
 <% if current_user == @event.creator%>
+<h4>
+<%=link_to "Invite people"%>
+</h4>
+<br />
+<hr>
 <td><%= link_to 'Edit', edit_event_path(@event) %></td>
 <%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

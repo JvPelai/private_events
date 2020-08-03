@@ -2,6 +2,8 @@
 
 <h1>Events</h1>
 
+<h3>Upcoming</h3>
+
 <table>
   <thead>
     <tr>
@@ -13,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% Event.next.each do |event| %>
       <tr>
         <td> <%= link_to "#{event.title}" , event %> </td>
         <td> <%=event.location %> </td>
@@ -21,16 +23,39 @@
         <td> <%=event.creator.username %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
+    <h4>Previous </h4>
+  <table>
+  <thead>
+    <tr>
+      <th> Title</th>
+      <th> Location</th>
+      <th> Date</th>
+      <th> Host </th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% Event.prev.each do |event| %>
+      <tr>
+        <td> <%= link_to "#{event.title}" , event %> </td>
+        <td> <%=event.location %> </td>
+        <td> <%=event.date %> </td>
+        <td> <%=event.creator.username %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
 <br>
 
 <% if logged_in?%>
 <%= link_to 'New Event', new_event_path %>
 <%else%>
  <p><strong>
- Log in to create an event!
+ <%= link_to 'Log in to create an event!',sign_in_path %>
  </strong>
  </p>
 <%end%>
